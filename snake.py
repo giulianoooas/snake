@@ -7,7 +7,7 @@ root.title("SNAKE")
 
 b = [[True for i in range(30)] for j in range(20)]
 
-lst_col = [i for i in range(30)]
+lst_col = [i for i in range(20)]
 lst_lin = [i for i in range(20)]
 
 bonus = {
@@ -45,12 +45,12 @@ def move():
             last  = "a"
             nr2 -= 1
             if nr2 < 0:
-                nr2 = 29
+                nr2 = 19
         elif last == "d":
             size = 2
             last = 'd'
             nr2 += 1
-            if nr2 == 30:
+            if nr2 == 20:
                 nr2 = 0
         elif last == "w":
             size = 2
@@ -80,7 +80,7 @@ def move():
 
         snake.append((nr1,nr2))
         createSnake()
-        root.after(250, move)
+        root.after(200, move)
 
 
 def direction(e):
@@ -103,15 +103,15 @@ def direction(e):
 Score = Label(root, text = str(score), bg = "black", fg = "white", font = "50",width = 10)
 Score.pack(pady = 15)
 GameFrame = Frame(root, bd = 1, relief = "groove")
-GameFrame.pack(pady = 15,padx = 10)
+GameFrame.pack(pady = 15,padx = 15)
 
-a = [[Label(GameFrame,width = 2,bg = "white") for i in range(50)] for j in range(20)]
+a = [[Label(GameFrame,width = 2,bg = "white") for i in range(20)] for j in range(20)]
 
 for i in range(20):
-    for j in range(30):
+    for j in range(20):
         a[i][j].grid(row = i, column = j)
 
-root.after(250,move)
+root.after(200,move)
 
 root.bind("<Key>", direction)
 
